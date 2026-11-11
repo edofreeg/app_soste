@@ -20,6 +20,15 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y git zip unzip openjdk-17-jdk autoconf automake libtool libtool-bin m4 pkg-config zlib1g-dev libncurses-dev cmake libffi-dev libssl-dev
+      - name: Configura Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Verifica Java
+        run: |
+          echo "JAVA_HOME=$JAVA_HOME"
+          java -version
       - name: Installa buildozer
         run: pip install buildozer "cython<3"
       - name: Compila APK
